@@ -12,6 +12,8 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT;
+app.use(express.json())
+
 
 app.get('/health-check', (req, res) => {
     res.send('We up baby!');
