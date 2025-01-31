@@ -1,3 +1,4 @@
+import { clerkMiddleware } from '@clerk/express'
 import express from 'express';
 import dotenv from 'dotenv';
 import userRoutes from "./routes/user.route.js";
@@ -8,11 +9,13 @@ import statsRoute from "./routes/stats.route.js";
 import adminRoutes from "./routes/admin.route.js";
 import {connectDB} from "./lib/db.js";
 
+
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT;
 app.use(express.json())
+app.use(clerkMiddleware())
 
 
 app.get('/health-check', (req, res) => {
