@@ -1,7 +1,16 @@
-import {Router} from 'express'
-const router = Router();
+import { Router } from "express";
+import { protectRoute } from "../middleware/auth.middleware.js";
+import {
+  getAllTracks,
+  getFeaturedTracks,
+  getMadeForYouTracks,
+  getTrendingTracks,
+} from "../controllers/track.controller";
 
-router.get('/', async (req, res) => {
-    res.send('tracks route with get method!');
-});
+
+const router = Router();
+router.get("/", protectRoute, getAllTracks);
+router.get("/featured", getFeaturedTracks);
+router.get("/made-for-you", getMadeForYouTracks);
+router.get("/trending", getTrendingTracks);
 export default router;

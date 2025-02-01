@@ -1,7 +1,10 @@
-import {Router} from 'express'
+import { Router } from "express";
+import {
+  getAllCollections,
+  getCollectionById,
+} from "../controllers/collection.controller.js";
 const router = Router();
-
-router.get('/', async (req, res) => {
-    res.send('collections route with get method!');
-});
+router.use(protectRoute);
+router.get("/", getAllCollections);
+router.get("/:id", getCollectionById);
 export default router;

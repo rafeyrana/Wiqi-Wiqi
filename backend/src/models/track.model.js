@@ -1,43 +1,46 @@
-import mongoose from 'mongoose';
-const trackSchema = new mongoose.Schema({
+import mongoose from "mongoose";
+const trackSchema = new mongoose.Schema(
+  {
     title: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     dj: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     imageUrl: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     genre: {
-        type: [{type: String, required: true}]
+      type: [{ type: String, required: true }],
     },
     audioUrl: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     duration: {
-        type: Number,
-        required: true,
+      type: Number,
+      required: true,
     },
     plays: {
-        type: Number,
+      type: Number,
     },
     downloads: {
-        type: Number,
+      type: Number,
     },
-    collection : {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Collection',
-        required: false
+    collection: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Collection",
+      required: false,
     },
     createdAt: {
-        type: Date,
-        default: Date.now,
+      type: Date,
+      default: Date.now,
     },
-}, {timestamp : true});
+  },
+  { timestamp: true }
+);
 
-export const Track = mongoose.model('Track', trackSchema);
+export const Track = mongoose.model("Track", trackSchema);

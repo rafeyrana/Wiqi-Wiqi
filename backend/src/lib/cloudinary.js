@@ -9,4 +9,18 @@ cloudinary.configure({
     api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+const uploadToCloudinary = async (file) => {
+    try {
+    const result = await cloudinary.uploader.upload(file.tempFilePath, {
+        resource_type: 'auto',
+        folder: 'wiqi-wiqi',
+    });
+    return result.secure_url;
+} catch (error) {
+    console.error('Error uploading to Cloudinary:', error);
+    throw new Error('Error uploading to Cloudinary', error);
+}
+};
+
+
 export default cloudinary;

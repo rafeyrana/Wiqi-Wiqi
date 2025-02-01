@@ -1,7 +1,7 @@
 import {Router} from 'express'
 const router = Router();
+import { getAllStats } from '../controllers/stats.controller';
+import { protectRoute } from '../middleware/auth.middleware';
 
-router.get('/', async (req, res) => {
-    res.send('stats route with get method!');
-});
+router.get('/', protectRoute, getAllStats)
 export default router;

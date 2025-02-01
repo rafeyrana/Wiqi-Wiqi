@@ -1,23 +1,25 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const messageSchema = new mongoose.Schema({
+const messageSchema = new mongoose.Schema(
+  {
     sender: {
-        type: string,
-        required: true,
+      type: string,
+      required: true,
     },
     receiver: {
-        type: string,
-        required: true,
+      type: string,
+      required: true,
     },
     content: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     createdAt: {
-        type: Date,
-        default: Date.now,
+      type: Date,
+      default: Date.now,
     },
-
-}, {timestamps: true});
+  },
+  { timestamps: true }
+);
 
 export const Message = mongoose.model("Message", messageSchema);
