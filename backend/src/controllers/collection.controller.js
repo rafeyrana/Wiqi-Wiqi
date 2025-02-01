@@ -1,4 +1,4 @@
-import { Collection } from "../models/collection.model";
+import { Collection } from "../models/collection.model.js";
 export const getAllCollections = async (req, res, next) => {
   try {
     const collections = await Collection.find();

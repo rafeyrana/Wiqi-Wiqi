@@ -5,7 +5,7 @@ import {
   getFeaturedTracks,
   getMadeForYouTracks,
   getTrendingTracks,
-} from "../controllers/track.controller";
+} from "../controllers/track.controller.js";
 
 
 const router = Router();

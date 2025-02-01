@@ -3,13 +3,13 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // setting up the cloudinary api
-cloudinary.configure({
+cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const uploadToCloudinary = async (file) => {
+export const uploadToCloudinary = async (file) => {
     try {
     const result = await cloudinary.uploader.upload(file.tempFilePath, {
         resource_type: 'auto',

@@ -1,5 +1,5 @@
-import Track from "../models/track.model.js";
-import Collection from "../models/collection.model.js";
+import {Track} from "../models/track.model.js";
+import {Collection} from "../models/collection.model.js";
 import { uploadToCloudinary } from "../lib/cloudinary.js";
 
 export const checkAdmin = async (req, res, next) => {
