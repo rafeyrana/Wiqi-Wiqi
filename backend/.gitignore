@@ -1,0 +1,51 @@
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Logs
+logs
+*.log
+logs/
+debug.log
+error.log
+*.pid
+*.seed
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Cache and build artifacts
+dist/
+build/
+.cache/
+.next/
+out/
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependencies and binaries
+.bower_components/
+jspm_packages/
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# Miscellaneous
+coverage/
+.nyc_output/
+*.tgz
+*.bak

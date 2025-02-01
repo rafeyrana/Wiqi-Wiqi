@@ -1,9 +1,11 @@
 import {Router} from "express";
-import {getAdmin} from "../controllers/admin.controller.js";
+import {createTrack} from "../controllers/admin.controller.js";
+import { protectRoute } from "../middleware/auth.middleware.js";
+import {requireAdmin} from "../middleware/auth.middleware.js";
 const router = Router();
 
 
-router.get('/', getAdmin)
+router.post('/tracks', protectRoute, requireAdmin, createTrack);
 
 
 export default router;
