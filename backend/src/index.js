@@ -10,10 +10,12 @@ import adminRoutes from "./routes/admin.route.js";
 import { connectDB } from "./lib/db.js";
 import fileUpload from "express-fileupload";
 import path from "path";
+import cors from "cors";
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT;
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 app.use(clerkMiddleware()); // this will add the auth to req objecy => req.auth
 
@@ -44,21 +46,17 @@ app.use("/api/admin", adminRoutes);
 
 // Error handling middleware
 app.use((error, req, res, next) => {
-  res
-    .status(500)
-    .json({
-      message:
-        process.env.NODE_ENV === "development"
-          ? error.message
-          : "Internal Server Error",
-    });
+  res.status(500).json({
+    message:
+      process.env.NODE_ENV === "development"
+        ? error.message
+        : "Internal Server Error",
+  });
 });
 
 app.listen(port, () => {
   console.log("Server is running on port " + port);
   connectDB();
 });
-
-
 
 // todo: implement socket.io interface
