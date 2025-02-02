@@ -1,10 +1,11 @@
-import Topbar from '@/components/Topbar'
-import React from 'react'
+import Topbar from "@/components/Topbar";
 
 function HomePage() {
   return (
-    <div><Topbar/></div>
-  )
+    <div>
+      <Topbar />
+    </div>
+  );
 }
 
-export default HomePage
+export default HomePage;
