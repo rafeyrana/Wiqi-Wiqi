@@ -17,10 +17,9 @@ function App() {
         }
       />
       <Route path="/auth-callback" element={<AuthCallbackPage />} />
-      <Route element={<MainLayout/>}>
+      <Route element={<MainLayout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/chat" element={<ChatPage />} />
-
       </Route>
     </Routes>
   );

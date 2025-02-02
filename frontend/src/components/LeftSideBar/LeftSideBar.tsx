@@ -1,14 +1,20 @@
 import { HomeIcon, Library, MessageSquare } from "lucide-react";
-import React from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils"; // Ensure cn is correctly imported
 import { buttonVariants } from "@/components/ui/button"; // Import buttonVariants if it's a utility
 import { SignedIn } from "@clerk/clerk-react";
 import { ScrollArea } from "../ui/scroll-area";
 import PlaylistSkeleton from "../PlaylistSkeleton/PlaylistSkeleton";
+import { useMusicStore } from "@/stores/useMusicStore";
+import { useEffect } from "react";
 
 function LeftSideBar() {
-    const isLoading = true
+  // data fetching logic -> zustand
+  const { tracks, collections, isLoading, fetchCollections } = useMusicStore();
+  useEffect(() => {
+    fetchCollections();
+  }, [fetchCollections]);
+
   return (
     <div className="h-full flex flex-col gap-2">
       <div className="rounded-lg bg-zinc-900 p-2">
@@ -47,13 +53,24 @@ function LeftSideBar() {
           </div>
         </div>
         <ScrollArea className="h-[calc(100vh-300px)]">
-            <div className="space-y-2">
-                {isLoading ? 
-                (
-                    <PlaylistSkeleton/>
-                ): <div>Some Music</div>}
-            </div>
-
+          <div className="space-y-2">
+            {isLoading ? (
+              <PlaylistSkeleton />
+            ) : (
+              collections?.length ? (
+                collections.map((collection) => (
+                  <Link key={collection._id} to={`/collections/${collection._id}`} className="group flex cursor-pointer items-center gap-3 rounded-md p-2 text-white hover:bg-zinc-800">
+                    <img src={collection.imageUrl} alt="collection-image" className="size-12 flex-shrink-0 rounded-md object-cover" />
+                    <div className="min-w-0 hidden md:block">
+                      <p className="truncate font-medium">{collection.title}</p>
+                      <p className="truncate text-sm text-zinc-400">Collection - {collection.dj}</p>
+                    </div>
+                  </Link>
+                ))
+              ) : <p className="text-white px-2">No collections found.</p>
+              
+            )}
+          </div>
         </ScrollArea>
       </div>
     </div>
