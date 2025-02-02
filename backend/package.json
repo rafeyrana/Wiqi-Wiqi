@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "seed:tracks": "node src/seeds/tracks.js"
+    "seed:tracks": "node src/seeds/tracks.js",
+    "seed:collection": "node src/seeds/collection.js"
   },
   "keywords": [],
   "author": "",
